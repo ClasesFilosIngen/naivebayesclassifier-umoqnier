@@ -55,11 +55,11 @@ def main():
     top_english = Counter(data["EN"]).most_common(10)
     top_spanish = Counter(data["ES"]).most_common(10)
     top_french = Counter(data["FR"]).most_common(10)
-    print("Most common in English", top_english)
+    print("Most common 3-grams on English", top_english)
     data_visualization(top_english, "English")
-    print("Most common in Spanish", top_spanish)
+    print("Most common 3-grams on Spanish", top_spanish)
     data_visualization(top_spanish, "Spanish")
-    print("Most common in French", top_french)
+    print("Most common 3-grams on French", top_french)
     data_visualization(top_french, "French")
 
 
