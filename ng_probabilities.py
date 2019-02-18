@@ -3,7 +3,6 @@
 from nltk.corpus import europarl_raw, conll2002
 from utilities import n_grams
 from collections import Counter
-import matplotlib.pyplot as plt
 import pickle
 import os
 
@@ -18,6 +17,7 @@ def get_corpus(lang):
 
 
 def data_visualization(data, lang):
+    import matplotlib.pyplot as plt
     data.sort(key=lambda elem: elem[1], reverse=True)
     x, y = list(), list()
     for d in data:
@@ -31,9 +31,8 @@ def data_visualization(data, lang):
     plt.show()
 
 
-def main():
+def most_common_ng(n, visualizar=0):
     langs = ["EN", "FR", "ES"]
-    n = 3
     grams = list()
     data = dict()
     if os.path.isfile("data-ngrams.obj"):
@@ -55,14 +54,12 @@ def main():
     top_english = Counter(data["EN"]).most_common(10)
     top_spanish = Counter(data["ES"]).most_common(10)
     top_french = Counter(data["FR"]).most_common(10)
-    print("Most common 3-grams on English", top_english)
-    data_visualization(top_english, "English")
-    print("Most common 3-grams on Spanish", top_spanish)
-    data_visualization(top_spanish, "Spanish")
-    print("Most common 3-grams on French", top_french)
-    data_visualization(top_french, "French")
-
-
-if __name__ == '__main__':
-    main()
+    if visualizar:
+        print("Most common 3-grams on English", top_english)
+        data_visualization(top_english, "English")
+        print("Most common 3-grams on Spanish", top_spanish)
+        data_visualization(top_spanish, "Spanish")
+        print("Most common 3-grams on French", top_french)
+        data_visualization(top_french, "French")
+    return {"español": top_spanish, "ingles": top_english, "frances": top_french}
 

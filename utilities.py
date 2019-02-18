@@ -6,6 +6,5 @@ def n_grams(word, n):
     if n <= len(word):
         return [word[i:i+n] for i in range(len(word) - n + 1)]
     else:
-        print("[WARNING] n should be <= that length of the word")
-        return word
+        return [word]
 
