@@ -1,10 +1,14 @@
 #!/usr/bin/python
 
 
-def n_grams(word, n):
-    """This funtion get a word and a integer for n. Return a list of n-grams"""
-    if n <= len(word):
-        return [word[i:i+n] for i in range(len(word) - n + 1)]
+def n_gramas(cadena, n):
+    """
+    Esta función recibe una cadena y un entero.
+    :param cadena: Cadena a procesar.
+    :param n: Número entero que es la ene de los n-gramas.
+    :return: Lista de n-gramas.
+    """
+    if len(cadena) <= n:
+        return [cadena]
     else:
-        return [word]
-
+        return [cadena[i:i+n] for i in range(len(cadena) - n + 1)]
