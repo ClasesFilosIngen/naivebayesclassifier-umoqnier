@@ -1,6 +1,14 @@
 # Data mining
 Repository for lecture of data mining at School of Engineering, UNAM 2019-2
 
-## Running ng_probabilities.py
-* This program needs `python 3.x`,`nltk` and `matlplotlib` packages
-* run with `$ python ng_probabilities.py`
+## ¿Cómo correr los programas?
+**Todos los programas requieren `python 3.x` para funcionar**
+### `distribucion_gramas.py`
+* NOTA: Este programa requiere las bibliotecas `nltk` y `matlplotlib`
+* `$ python distribucion_gramas.py`
+
+### `detector_idiomas.py`
+* `$ python detector_idiomas.py <cadena_a_ser_analizada>`
+
+### `apriori.py`
+* `$ python apriori.py`
