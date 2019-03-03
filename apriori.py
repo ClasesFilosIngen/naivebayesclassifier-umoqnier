@@ -1,6 +1,9 @@
 #!/usr/bin/python 
 import itertools
 
+# TODO: Falta probar con casos diversos
+# TODO: Refactorizar funciones para mejor desempeño
+
 
 def candidatos_iniciales(base_datos):
     """
@@ -24,7 +27,7 @@ def generador_candidatos(frecuentes, k):
     :return: Lista de tuplas que serán elementos candidatos a ser frecuentes
     """
     if k == 2:
-        data = list(itertools.combinations(frecuentes, 2))
+        data = list(itertools.combinations([c[0] for c in frecuentes], 2))
         return [tuple(sorted(d)) for d in data]
     else:
         data = list()
@@ -52,7 +55,7 @@ def frecuentes_iniciales(singletones, base_datos, min_sup):
             if singleton in t:
                 cuenta += 1
         if (cuenta / len(base_datos)) >= min_sup:
-            elementos.append(singleton)
+            elementos.append(tuple([singleton]))
     return elementos
 
 
@@ -107,18 +110,3 @@ def apriori(base_datos, min_sup, min_conf):
                       if (frecuencia / len(base_datos)) >= min_sup]
         k += 1
     return previos_frecuentes
-
-
-if __name__ == '__main__':
-    # TODO: Falta probar con casos diversos
-    # TODO: Refactorizar funciones
-    carrito = (("carne", "pollo", "leche"), ("carne", "queso"), ("queso", "botas"),
-             ("carne", "pollo", "queso"), ("carne", "pollo", "ropa", "queso", "leche"),
-             ("pollo", "ropa", "leche"), ("pollo", "leche", "ropa"))
-    print("* Carrito de compras *")
-    for i, art in enumerate(carrito):
-        print("t", i + 1, ":", art)
-    items_frecuentes = apriori(carrito, 0.3, 0.8)
-    print("* Items frecuentes *")
-    for item in items_frecuentes:
-        print(item)
