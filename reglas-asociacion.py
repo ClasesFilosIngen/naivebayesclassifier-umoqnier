@@ -15,7 +15,8 @@ class Regla:
         self.confianza = confianza
 
     def __str__(self):
-        return str(self.base) + ' -> ' + ', '.join(self.implicacion) + ' || Conf> ' + str(self.confianza) + ' Apoyo> ' + str(self.apoyo)
+        return str(self.base) + ' -> ' + ', '.join(self.implicacion) + ' || Confianza = ' + str(self.confianza) + \
+               ' -- Apoyo = ' + str(self.apoyo)
 
 
 carrito = (("carne", "pollo", "leche"), ("carne", "queso"), ("queso", "botas"),
@@ -58,7 +59,6 @@ def reglas_un_item_consecuente(base, regla, min_conf, apoyo, base_len):
         if confianza >= min_conf:
             r = Regla(','.join(r_base), tuple(set(regla) - set(r_base)), calcula_soporte(base, regla), confianza)
             print(r)
-            RULES.append(r)
             data.append(tuple(set(regla) - set(r_base)))
     return data
 
@@ -77,6 +77,10 @@ def main():
     min_sup = 0.3
     min_conf = 0.8
     items_frecuentes = apriori(carrito, min_sup)
+    print("Base de Datos utilizada")
+    for i, t in enumerate(carrito):
+        print("t", i, ">>", t)
+    print('*' * 10, "REGLAS GENERADAS", '*' * 10)
     generador_reglas(carrito, items_frecuentes, min_conf, min_sup)
 
     
