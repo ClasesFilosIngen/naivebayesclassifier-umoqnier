@@ -1,5 +1,6 @@
 #!/usr/bin/python 
 import itertools
+from utilities import contador_ocurrencias
 
 # TODO: Falta probar con casos diversos
 # TODO: Refactorizar funciones para mejor desempeño
@@ -19,7 +20,7 @@ def candidatos_iniciales(base_datos):
     return data
 
 
-def generador_candidatos(frecuentes, k):
+def generador_candidatos(frecuentes, k=0):
     """
     Función encargada de generar candidatos a ser frecuentes
     :param frecuentes: Elemento frecuentes de la iteración k
@@ -50,12 +51,10 @@ def frecuentes_iniciales(singletones, base_datos, min_sup):
     """
     elementos = list()
     for singleton in singletones:
-        cuenta = 0
-        for t in base_datos:
-            if singleton in t:
-                cuenta += 1
+        singleton = tuple([singleton])
+        cuenta = contador_ocurrencias(base_datos, singleton)
         if (cuenta / len(base_datos)) >= min_sup:
-            elementos.append(tuple([singleton]))
+            elementos.append(singleton)
     return elementos
 
 
@@ -81,7 +80,7 @@ def descartar_candidatos(candidatos, previos_frecuentes, k):
     return data
 
 
-def apriori(base_datos, min_sup, min_conf):
+def apriori(base_datos, min_sup):
     """
     Algoritmo apriori para obtener items frecuentes en una base de datos
     :param base_datos: Datos que serán analizados. Ej: carrito de compras

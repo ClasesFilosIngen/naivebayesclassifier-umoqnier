@@ -12,3 +12,11 @@ def n_gramas(cadena, n):
         return [cadena]
     else:
         return [cadena[i:i+n] for i in range(len(cadena) - n + 1)]
+
+
+def contador_ocurrencias(base_datos, regla):
+    cuenta = 0
+    for item in base_datos:
+        if set(regla).issubset(set(item)):
+            cuenta += 1
+    return cuenta
