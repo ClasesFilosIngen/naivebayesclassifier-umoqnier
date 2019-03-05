@@ -11,4 +11,7 @@ Repository for lecture of data mining at School of Engineering, UNAM 2019-2
 * `$ python detector_idiomas.py <cadena_a_ser_analizada>`
 
 ### `apriori.py`
-* `$ python apriori.py`
+* Actualmente funciona como submodulo para otros programas. EJ: `reglas-asociacion.py`
+
+### `reglas-asociacion.py`
+* `$ python reglas-asociacion.py`
