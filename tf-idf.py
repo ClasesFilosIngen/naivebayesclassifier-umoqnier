@@ -1,11 +1,15 @@
 #!/usr/bin/python3
 from math import log
 import os
-import unicodedata
 from string import punctuation
 
+# TODO: Documentar funciones
+# TODO: Normalizar los documentos 
 
 def remove_punctuation(string):
+    """
+    
+    """
     return string.translate(string.maketrans('', '', punctuation))
 
 
@@ -26,7 +30,7 @@ def idf(term, docs):
         if term in doc:
             count += 1
             continue
-    return log(total_docs / count, 10)
+    return log(total_docs / (count + 1), 10)
 
 
 def ccleaner_doc(text):
@@ -47,9 +51,13 @@ def get_documents(folder):
 
 
 def main():
+    results = {}
     documents = get_documents("documents")
     print("Enter the word to be tf-idfizer")
     query = input("# ")
+    for i, doc in enumerate(documents):
+        results[str(i)] = tf(query, doc) * idf(query, doc)
+    print("Results >>", results)
 
 
 if __name__ == "__main__":
