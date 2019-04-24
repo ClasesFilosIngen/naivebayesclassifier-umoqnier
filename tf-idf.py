@@ -40,23 +40,25 @@ def ccleaner_doc(text):
 
 def get_documents(folder):
     documents = []
+    themes = []
     print(">>> Current documents <<<")
     for root, dirs, files in os.walk(folder):
         for name in files:
             print("\t->", name)
+            themes.append(name[:-4])
             with open(os.path.join(root, name)) as f:
                 data = f.read()
             documents.append(ccleaner_doc(data))
-    return documents
+    return documents, themes
 
 
 def main():
     results = {}
-    documents = get_documents("documents")
+    documents, themes = get_documents("documents")
     print("Enter the word to be tf-idfizer")
-    query = input("# ")
+    query = input("root@machine# ")
     for i, doc in enumerate(documents):
-        results[str(i)] = tf(query, doc) * idf(query, doc)
+        results[themes[i]] = tf(query, doc) * idf(query, doc)
     print("Results >>", results)
 
 
