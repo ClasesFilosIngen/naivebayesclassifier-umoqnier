@@ -32,3 +32,22 @@ Se requiere completar las siguientes tareas:
 5. *(generacion de quintuplas de opinion) *Producir todas las quintuplas de opiniones `()` expresadas en el documento.
 
 A este conjunto de tareas se les conoce como un problema **NLP complete**
+
+## Reglas sintacticas de oraciones sentimentales
+Turney extraía frases y comparaba con altavista y media la frase usando la proximidad
+"frase" ~ "excelente"
+"frase" ~ "pesimo"
+
+## Aprendizaje supervisado
+Pong, Lee, Vaithgenathan 2002
+
+## Lexicon y opinones
+
+
+La perplejidad nos ayuda a saber si al cambiar alguna palabra se mantiene el sentido de la oración
+
+* Web Data Mining 2nd edition
+* Lexicones libres 
+  * SEL Sidorov
+  * SentiWordNet
+
