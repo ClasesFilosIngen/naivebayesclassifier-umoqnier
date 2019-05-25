@@ -15,3 +15,9 @@ Repository for lecture of data mining at School of Engineering, UNAM 2019-2
 
 ### `reglas-asociacion.py`
 * `$ python reglas-asociacion.py`
+
+### `tf-idf.py`
+* `$ python td-idf.py` 
+
+### `bayes-ingenuo.ipynb`
+* Abrir con jupyter o google colab
